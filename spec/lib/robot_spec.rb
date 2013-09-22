@@ -3,7 +3,8 @@ require File.expand_path 'lib/placement'
 
 describe Robot do
 
-  let(:robot) { Robot.new }
+  let(:table_top) { double("TableTop") }
+  let(:robot) { Robot.new(table_top) }
 
   describe "#place" do
     let(:valid) { true }
