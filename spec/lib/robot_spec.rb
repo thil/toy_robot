@@ -1,10 +1,11 @@
 require File.expand_path 'lib/robot'
 require File.expand_path 'lib/non_placement'
+require File.expand_path 'lib/placement'
 require File.expand_path 'lib/pos'
 
 describe Robot do
 
-  let(:table_top) { double("TableTop") }
+  let(:table_top) { double("TableTop", width: 5, height: 5) }
   let(:robot) { Robot.new(table_top) }
 
   describe "#place" do
@@ -29,26 +30,31 @@ describe Robot do
   end
 
   describe "#move" do
+    let(:placement) { Placement.new(@pos) }
     subject { robot.move; robot }
 
     it "moves robot forward one position" do
-      robot.place(0, 0, POS::NORTH)
+      @pos = Pos.new(0, 0, Pos::NORTH)
+      robot.place(placement)
       expect( subject.placement.y ).to be 1
     end
 
     it "moves robot forward one position" do
-      robot.place(0, 0, POS::EAST)
+      @pos = Pos.new(0, 0, Pos::EAST)
+      robot.place(placement)
       expect( subject.placement.x ).to be 1
     end
 
     context "on the edge of tabletop" do
       it "restricts any movement off table vertically" do
-        robot.place(0, 0, POS::SOUTH)
+        @pos = Pos.new(0, 0, Pos::SOUTH)
+        robot.place(placement)
         expect( subject.placement.x ).to be 0
       end
 
       it "restricts any movement off table horizontally" do
-        robot.place(0, 0, POS::WEST)
+        @pos = Pos.new(0, 0, Pos::WEST)
+        robot.place(placement)
         expect( subject.placement.y ).to be 0
       end
     end

@@ -8,6 +8,10 @@ class Robot
     @placement = NonPlacement.new
   end
 
+  def move
+    place placement.move
+  end
+
   def place(placement)
     @placement = placement if placement.valid? table_top
   end
