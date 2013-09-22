@@ -1,7 +1,14 @@
-class Robot
-  attr_reader :x, :y, :orientation
+require 'non_placement'
 
-  def place(x, y, orientation)
-    @x = x; @y = y; @orientation = orientation
+class Robot
+  attr_reader :placement, :table_top
+
+  def initialize(table_top)
+    @table_top = table_top
+    @placement = NonPlacement.new
+  end
+
+  def place(placement)
+    @placement = placement if placement.valid? table_top
   end
 end

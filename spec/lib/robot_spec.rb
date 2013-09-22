@@ -1,25 +1,29 @@
 require File.expand_path 'lib/robot'
+require File.expand_path 'lib/non_placement'
 
 describe Robot do
 
-  let(:robot) { Robot.new }
+  let(:table_top) { double("TableTop") }
+  let(:robot) { Robot.new(table_top) }
 
   describe "#place" do
-    let(:x) { 1 }
-    let(:y) { 1 }
-    let(:orientation) { "NORTH" }
-    subject { robot.place(x, y, orientation); robot }
+    let(:valid) { true }
+    let(:placement) { double("Placement") }
+    subject { robot.place(placement);robot }
 
-    it "assigns x onto robot" do
-      expect(subject.x).to be x
+    before do
+      placement.stub(:valid?).and_return(valid)
     end
 
-    it "assigns y onto robot" do
-      expect(subject.y).to be y
+    it "assigns placement" do
+      expect( subject.placement ).to be placement
     end
 
-    it "assigns orientation onto robot" do
-      expect(subject.orientation).to be orientation
+    context "invalid placement" do
+      let(:valid) { false }
+      it "should ignore placement" do
+        expect( subject.placement.report ).to be NonPlacement::REPORT
+      end
     end
   end
 
