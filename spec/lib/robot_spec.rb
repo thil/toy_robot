@@ -8,7 +8,7 @@ describe Robot do
 
   describe "#place" do
     let(:valid) { true }
-    let(:placement) { Placement.new(1, 1, "NORTH") }
+    let(:placement) { double("Placement") }
     subject { robot.place(placement);robot }
 
     before do

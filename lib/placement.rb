@@ -1,11 +1,12 @@
 class Placement
-  attr_reader :x, :y, :orientation
+  attr_reader :pos
 
-  def initialize(x, y, orientation)
-    @x =x; @y = y; @orientation = orientation
+  def initialize(pos)
+    @pos = pos
   end
 
   def valid?(table_top)
-    x >= 0 && x < table_top.width && y >= 0 && y < table_top.height
+    pos.x >= 0 && pos.x < table_top.width && 
+      pos.y >= 0 && pos.y < table_top.height
   end
 end

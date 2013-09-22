@@ -1,3 +1,4 @@
+require File.expand_path 'lib/pos'
 require File.expand_path 'lib/placement'
 require File.expand_path 'lib/table_top'
 
@@ -7,19 +8,12 @@ describe Placement do
   let(:y) { 1 }
   let(:orientation) { "NORTH" }
 
-  let(:placement) { Placement.new(x, y, orientation) }
+  let(:pos) { Pos.new(x, y, orientation) }
+  let(:placement) { Placement.new(pos) }
 
   describe "#initialize" do 
-    it "assigns x onto robot" do
-      expect(placement.x).to be x
-    end
-
-    it "assigns y onto robot" do
-      expect(placement.y).to be y
-    end
-
-    it "assigns orientation onto robot" do
-      expect(placement.orientation).to be orientation
+    it "assigns pos" do
+      expect(placement.pos).to be pos
     end
   end
 
