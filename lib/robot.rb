@@ -1,8 +1,11 @@
+require 'non_placement'
+
 class Robot
   attr_reader :placement, :table_top
 
   def initialize(table_top)
     @table_top = table_top
+    @placement = NonPlacement.new
   end
 
   def place(placement)

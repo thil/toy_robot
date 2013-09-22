@@ -1,5 +1,5 @@
 require File.expand_path 'lib/robot'
-require File.expand_path 'lib/placement'
+require File.expand_path 'lib/non_placement'
 
 describe Robot do
 
@@ -22,7 +22,7 @@ describe Robot do
     context "invalid placement" do
       let(:valid) { false }
       it "should ignore placement" do
-        expect( subject.placement ).to be nil
+        expect( subject.placement.report ).to be NonPlacement::REPORT
       end
     end
   end
