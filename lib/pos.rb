@@ -25,6 +25,10 @@ class Pos
     end
   end
 
+  def report
+    "OUTPUT: #{x}, #{y}, #{orientation.to_s.upcase}"
+  end
+
   def left
     Pos.new(x, y, turn(LEFT))
   end

@@ -16,6 +16,10 @@ class Robot
     place placement.right
   end
 
+  def report
+    placement.report
+  end
+
   def left
     place placement.left
   end

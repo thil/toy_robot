@@ -13,6 +13,10 @@ class Placement
     Placement.new( pos.left )
   end
 
+  def report
+    pos.report
+  end
+
   def right
     Placement.new( pos.right )
   end

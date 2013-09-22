@@ -23,10 +23,22 @@ describe Robot do
 
     context "invalid placement" do
       let(:valid) { false }
-      it "should ignore placement" do
+      it "ignores placement" do
         expect( subject.placement.report ).to be NonPlacement::REPORT
       end
     end
+  end
+
+  describe "#report" do
+    let(:placement) { Placement.new(pos) }
+    let(:pos) { Pos.new(0, 0, Pos::WEST) }
+    subject { robot.report }
+
+    it "reports back current position" do
+      robot.place(placement)
+      expect(subject).to eq "OUTPUT: 0, 0, WEST"
+    end
+
   end
 
   describe "#right" do
