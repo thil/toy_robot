@@ -1,7 +1,7 @@
 class Robot
-  attr_reader :x, :y, :orientation
+  attr_reader :placement
 
-  def place(x, y, orientation)
-    @x = x; @y = y; @orientation = orientation
+  def place(placement)
+    @placement = placement
   end
 end
