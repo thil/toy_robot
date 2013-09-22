@@ -21,6 +21,14 @@ describe Pos do
     end
   end
 
+  describe "#report" do
+    subject { pos.report }
+
+    it "reports on position" do
+      expect(subject).to eq "OUTPUT: 1, 1, NORTH"
+    end
+  end
+
   describe "#right" do 
     subject { pos.right }
 
