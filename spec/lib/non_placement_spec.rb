@@ -18,6 +18,13 @@ describe NonPlacement do
     end
   end
 
+  describe "#left" do 
+    subject { non_placement.left }
+    it "returns non placement" do
+      expect( subject ).to be non_placement
+    end
+  end
+
   describe "#move" do 
     subject { non_placement.move }
     it "returns non placement" do

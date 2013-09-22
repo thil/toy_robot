@@ -21,6 +21,38 @@ describe Pos do
     end
   end
 
+  describe "#left" do 
+    subject { pos.left }
+
+    context "facing NORTH" do
+      let(:orientation) { Pos::NORTH }
+      it "switches to WEST" do
+        expect(subject.orientation).to be Pos::WEST
+      end
+    end
+
+    context "facing WEST" do
+      let(:orientation) { Pos::WEST }
+      it "switches to SOUTH" do
+        expect(subject.orientation).to be Pos::SOUTH
+      end
+    end
+
+    context "facing SOUTH" do
+      let(:orientation) { Pos::SOUTH }
+      it "switches to EAST" do
+        expect(subject.orientation).to be Pos::EAST
+      end
+    end
+
+    context "facing EAST" do
+      let(:orientation) { Pos::EAST }
+      it "switches to NORTH" do
+        expect(subject.orientation).to be Pos::NORTH
+      end
+    end
+  end
+
   describe "#move" do
     subject { pos.move }
     context "facing NORTH" do

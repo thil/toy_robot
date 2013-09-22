@@ -9,6 +9,10 @@ class Placement
     Placement.new( pos.move )
   end
 
+  def left
+    Placement.new( pos.left )
+  end
+
   def valid?(table_top)
     pos.x >= 0 && pos.x < table_top.width && 
       pos.y >= 0 && pos.y < table_top.height

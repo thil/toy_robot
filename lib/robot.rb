@@ -12,6 +12,10 @@ class Robot
     place placement.move
   end
 
+  def left
+    place placement.left
+  end
+
   def place(placement)
     @placement = placement if placement.valid? table_top
   end
