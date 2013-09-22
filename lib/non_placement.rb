@@ -2,11 +2,15 @@
 class NonPlacement
   REPORT = "Non Placement"
 
-  def valid?
+  def valid?(table_top)
     true
   end
 
   def report
     REPORT
+  end
+
+  def move
+    self
   end
 end

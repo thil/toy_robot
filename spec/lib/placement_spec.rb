@@ -4,8 +4,8 @@ require File.expand_path 'lib/table_top'
 
 describe Placement do
 
-  let(:x) { 1 }
-  let(:y) { 1 }
+  let(:x) { 0 }
+  let(:y) { 0 }
   let(:orientation) { "NORTH" }
 
   let(:pos) { Pos.new(x, y, orientation) }
@@ -14,6 +14,15 @@ describe Placement do
   describe "#initialize" do 
     it "assigns pos" do
       expect(placement.pos).to be pos
+    end
+  end
+
+  describe "#move" do
+    subject { placement.move }
+    let(:new_pos) { Pos.new(1, 1, Pos::SOUTH) }
+    it "assigns a new placement with new position" do
+      pos.stub(:move).and_return(new_pos)
+      expect(subject.pos).to eq new_pos
     end
   end
 
