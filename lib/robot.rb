@@ -12,6 +12,10 @@ class Robot
     place placement.move
   end
 
+  def right
+    place placement.right
+  end
+
   def left
     place placement.left
   end

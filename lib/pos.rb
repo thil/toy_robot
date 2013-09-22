@@ -5,6 +5,8 @@ class Pos
   WEST = :west
   SOUTH = :south
   DIRECTIONS = [ NORTH, EAST, SOUTH, WEST ]
+  LEFT = -1
+  RIGHT = 1
 
   def initialize(x, y, orientation)
     @x = x; @y = y; @orientation = orientation
@@ -24,13 +26,17 @@ class Pos
   end
 
   def left
-    Pos.new(x, y, turn_left)
+    Pos.new(x, y, turn(LEFT))
+  end
+
+  def right
+    Pos.new(x, y, turn(RIGHT))
   end
 
   private
-  def turn_left
+  def turn(direction)
     index = DIRECTIONS.index(orientation)
-    DIRECTIONS.rotate(-1)[index]
+    DIRECTIONS.rotate(direction)[index]
   end
 
 end

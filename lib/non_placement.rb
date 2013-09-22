@@ -14,6 +14,10 @@ class NonPlacement
     self
   end
 
+  def right
+    self
+  end
+
   def move
     self
   end

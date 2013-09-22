@@ -17,6 +17,15 @@ describe Placement do
     end
   end
 
+  describe "#right" do
+    subject { placement.right }
+    let(:new_pos) { Pos.new(1, 1, Pos::SOUTH) }
+    it "assigns a new placement with new orientation" do
+      pos.stub(:right).and_return(new_pos)
+      expect(subject.pos).to eq new_pos
+    end
+  end
+
   describe "#left" do
     subject { placement.left }
     let(:new_pos) { Pos.new(1, 1, Pos::SOUTH) }
