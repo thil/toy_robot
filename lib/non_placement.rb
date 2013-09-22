@@ -10,6 +10,14 @@ class NonPlacement
     REPORT
   end
 
+  def left
+    self
+  end
+
+  def right
+    self
+  end
+
   def move
     self
   end

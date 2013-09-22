@@ -29,6 +29,40 @@ describe Robot do
     end
   end
 
+  describe "#right" do
+    subject { robot.right; robot }
+    let(:placement) { Placement.new(pos) }
+    let(:pos) { Pos.new(0, 0, Pos::WEST) }
+
+    it "turns from WEST to NORTH" do
+      robot.place(placement)
+      expect( subject.placement.pos.orientation ).to be Pos::NORTH
+    end
+
+    context "not placed" do
+      it "ignores movement" do
+        expect( subject.placement.report ).to be NonPlacement::REPORT
+      end
+    end
+  end
+
+  describe "#left" do
+    subject { robot.left; robot }
+    let(:placement) { Placement.new(pos) }
+    let(:pos) { Pos.new(0, 0, Pos::NORTH) }
+
+    it "turns from NORTH to WEST" do
+      robot.place(placement)
+      expect( subject.placement.pos.orientation ).to be Pos::WEST
+    end
+
+    context "not placed" do
+      it "ignores movement" do
+        expect( subject.placement.report ).to be NonPlacement::REPORT
+      end
+    end
+  end
+
   describe "#move" do
     let(:placement) { Placement.new(@pos) }
     subject { robot.move; robot }
