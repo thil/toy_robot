@@ -36,26 +36,26 @@ describe Robot do
     it "moves robot forward one position" do
       @pos = Pos.new(0, 0, Pos::NORTH)
       robot.place(placement)
-      expect( subject.placement.y ).to be 1
+      expect( subject.placement.pos.y ).to be 1
     end
 
     it "moves robot forward one position" do
       @pos = Pos.new(0, 0, Pos::EAST)
       robot.place(placement)
-      expect( subject.placement.x ).to be 1
+      expect( subject.placement.pos.x ).to be 1
     end
 
     context "on the edge of tabletop" do
       it "restricts any movement off table vertically" do
         @pos = Pos.new(0, 0, Pos::SOUTH)
         robot.place(placement)
-        expect( subject.placement.x ).to be 0
+        expect( subject.placement.pos.x ).to be 0
       end
 
       it "restricts any movement off table horizontally" do
         @pos = Pos.new(0, 0, Pos::WEST)
         robot.place(placement)
-        expect( subject.placement.y ).to be 0
+        expect( subject.placement.pos.y ).to be 0
       end
     end
 
