@@ -22,6 +22,8 @@ class Pos
       Pos.new(x + 1, y, orientation)
     when WEST
       Pos.new(x - 1, y, orientation)
+    else
+      raise "Invalid Orientation"
     end
   end
 

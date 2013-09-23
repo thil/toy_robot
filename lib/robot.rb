@@ -1,4 +1,4 @@
-require 'non_placement'
+require_relative 'non_placement'
 
 class Robot
   attr_reader :placement, :table_top
