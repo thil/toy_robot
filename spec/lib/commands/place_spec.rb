@@ -1,12 +1,12 @@
-require File.expand_path 'lib/commands/place_command'
+require File.expand_path 'lib/commands/place'
 require File.expand_path 'lib/pos'
 require File.expand_path 'lib/robot'
 
-describe PlaceCommand do
+describe Commands::Place do
 
   let(:place) { "place" }
   let(:params) { "PLACE 0,0,north" }
-  let(:place_command) { PlaceCommand.new(robot, params) }
+  let(:place_command) { described_class.new(robot, params) }
   let(:table_top) { double("Table Top", width: 5, height: 5) }
   let(:robot) { Robot.new(table_top) }
 

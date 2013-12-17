@@ -1,10 +1,10 @@
-require File.expand_path 'lib/commands/report_command'
+require File.expand_path 'lib/commands/report'
 
-describe ReportCommand do
+describe Commands::Report do
 
   let(:report) { "report" }
   let(:robot) { double("Robot", report: report ) }
-  let(:report_command) { ReportCommand.new(robot) }
+  let(:report_command) { described_class.new(robot) }
 
   describe "#run" do
     subject { report_command.run }

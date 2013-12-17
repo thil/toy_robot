@@ -1,10 +1,10 @@
-require File.expand_path 'lib/commands/right_command'
+require File.expand_path 'lib/commands/right'
 
-describe RightCommand do
+describe Commands::Right do
 
   let(:right) { "right" }
   let(:robot) { double("Robot", right: right ) }
-  let(:right_command) { RightCommand.new(robot) }
+  let(:right_command) { described_class.new(robot) }
 
   describe "#run" do
     subject { right_command.run }

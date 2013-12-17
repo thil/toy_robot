@@ -1,10 +1,10 @@
-require File.expand_path 'lib/commands/move_command'
+require File.expand_path 'lib/commands/move'
 
-describe MoveCommand do
+describe Commands::Move do
 
   let(:move) { "move" }
   let(:robot) { double("Robot", move: move ) }
-  let(:move_command) { MoveCommand.new(robot) }
+  let(:move_command) { described_class.new(robot) }
 
   describe "#run" do
     subject { move_command.run }
