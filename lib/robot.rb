@@ -1,30 +1,30 @@
-require_relative 'non_placement'
+require_relative 'non_pos'
 
 class Robot
-  attr_reader :placement, :table_top
+  attr_reader :pos, :table_top
 
   def initialize(table_top)
     @table_top = table_top
-    @placement = NonPlacement.new
+    @pos = NonPos.new
   end
 
   def move
-    place placement.move
+    place pos.move
   end
 
   def right
-    place placement.right
+    place pos.right
   end
 
   def report
-    placement.report
+    pos.report
   end
 
   def left
-    place placement.left
+    place pos.left
   end
 
-  def place(placement)
-    @placement = placement if placement.valid? table_top
+  def place(pos)
+    @pos = pos if pos.valid? table_top
   end
 end

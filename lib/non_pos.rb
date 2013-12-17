@@ -1,5 +1,5 @@
 #null object class for placement, so can be used to ignore other commands
-class NonPlacement
+class NonPos
   REPORT = "Non Placement"
 
   def valid?(table_top)

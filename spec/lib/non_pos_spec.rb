@@ -1,8 +1,8 @@
-require File.expand_path 'lib/non_placement'
+require File.expand_path 'lib/non_pos'
 
-describe NonPlacement do
+describe NonPos do
 
-  let(:non_placement) { NonPlacement.new }
+  let(:non_placement) { NonPos.new }
 
   describe "#valid?" do
     subject { non_placement.valid?(double) }
@@ -14,7 +14,7 @@ describe NonPlacement do
   describe "#report" do
     subject { non_placement.report }
     it "returns placement report" do
-      expect( subject ). to be NonPlacement::REPORT
+      expect( subject ). to be NonPos::REPORT
     end
   end
 

@@ -15,17 +15,17 @@ describe Commands::Place do
 
     it "positions robot x" do
       subject
-      expect(robot.placement.pos.x).to eq 0
+      expect(robot.pos.x).to eq 0
     end
 
     it "positions robot y" do
       subject
-      expect(robot.placement.pos.x).to eq 0
+      expect(robot.pos.x).to eq 0
     end
 
     it "orientates robot " do
       subject
-      expect(robot.placement.pos.orientation).to eq Pos::NORTH
+      expect(robot.pos.orientation).to eq Pos::NORTH
     end
 
   end
