@@ -39,10 +39,6 @@ class Pos
     Pos.new(x, y, turn(RIGHT))
   end
 
-  def valid?(table_top)
-    x >= 0 && x < table_top.width && y >= 0 && y < table_top.height
-  end
-
   private
   def turn(direction)
     index = DIRECTIONS.index(orientation)

@@ -25,6 +25,6 @@ class Robot
   end
 
   def place(pos)
-    @pos = pos if pos.valid? table_top
+    @pos = pos if table_top.valid? pos
   end
 end

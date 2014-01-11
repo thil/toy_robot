@@ -9,7 +9,7 @@ class Command
   class << self
     def find(command_name, robot, params)
       Commands.const_get(command_name).new(robot, params)
-      rescue
+      rescue NameError
         Commands::Base.new()
     end
   end
