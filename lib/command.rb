@@ -1,16 +1,26 @@
-require_relative 'commands/move'
-require_relative 'commands/place'
-require_relative 'commands/report'
-require_relative 'commands/left'
-require_relative 'commands/right'
-require_relative 'commands/base'
+require_relative 'pos'
 
 class Command
-  class << self
-    def find(command_name, robot, params)
-      Commands.const_get(command_name).new(robot, params)
-      rescue NameError
-        Commands::Base.new()
+  def initialize(robot, params)
+    @robot = robot
+    @params = params
+  end
+
+  def place
+    pos = Pos.new position[0].to_i, position[1].to_i, position[2].downcase.to_sym
+    @robot.place pos
+  end
+
+  def method_missing(method, *args, &block)
+    if @robot.respond_to?(method)
+      @robot.public_send(method)
+    else
+      super
     end
+  end
+
+  private
+  def position
+    @position ||= @params.split.last.split(',')
   end
 end

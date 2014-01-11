@@ -9,6 +9,12 @@ class Simulator
   end
 
   def parse(params)
-    Command.find(params.split.first.capitalize, @robot, params).run
+    Command.new(@robot, params).public_send(command_name(params))
+  end
+
+  private
+
+  def command_name(params)
+    params.split.first.downcase
   end
 end

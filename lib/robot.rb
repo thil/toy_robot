@@ -17,7 +17,7 @@ class Robot
   end
 
   def report
-    pos.report
+    puts pos.report
   end
 
   def left
@@ -25,6 +25,6 @@ class Robot
   end
 
   def place(pos)
-    @pos = pos if table_top.valid? pos
+    @pos = pos if pos.valid?(table_top)
   end
 end

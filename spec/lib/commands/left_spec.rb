@@ -1,6 +1,6 @@
 require File.expand_path 'lib/commands/left'
 
-describe Commands::Left do
+describe Commandt do
 
   let(:left) { "left" }
   let(:robot) { double("Robot", left: left ) }
