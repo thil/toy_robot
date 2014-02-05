@@ -15,6 +15,7 @@ class Command
     if @robot.respond_to?(method)
       @robot.public_send(method)
     else
+      #Handle non commands
       super
     end
   end

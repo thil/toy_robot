@@ -1,17 +1,13 @@
-require File.expand_path 'lib/commands/place'
-require File.expand_path 'lib/pos'
+require File.expand_path 'lib/command'
 require File.expand_path 'lib/robot'
 
-describe Commands::Place do
-
-  let(:place) { "place" }
+describe Command do
   let(:params) { "PLACE 0,0,north" }
-  let(:place_command) { described_class.new(robot, params) }
-  let(:table_top) { double("Table Top", width: 5, height: 5) }
-  let(:robot) { Robot.new(table_top) }
+  let(:robot)   { Robot.new(double('TableTop', width: 5, height: 5)) }
+  let(:command) { Command.new(robot, params) }
 
-  describe "#run" do
-    subject { place_command.run }
+  describe '#place' do
+    subject { command.place }
 
     it "positions robot x" do
       subject
@@ -27,7 +23,6 @@ describe Commands::Place do
       subject
       expect(robot.pos.orientation).to eq Pos::NORTH
     end
-
   end
 
 end

@@ -30,9 +30,16 @@ describe Robot do
 
     it "reports back current position" do
       robot.place(pos)
-      expect(subject).to eq "OUTPUT: 0, 0, WEST"
+      $stdout.should_receive(:puts).with("OUTPUT: 0, 0, WEST")
+      subject
     end
 
+    context "not placed" do
+      it "ignores movement" do
+        $stdout.should_receive(:puts).with(NonPos::REPORT)
+        subject
+      end
+    end
   end
 
   describe "#right" do
@@ -60,11 +67,6 @@ describe Robot do
       expect( subject.pos.orientation ).to be Pos::WEST
     end
 
-    context "not placed" do
-      it "ignores movement" do
-        expect( subject.pos.report ).to be NonPos::REPORT
-      end
-    end
   end
 
   describe "#move" do
@@ -95,12 +97,5 @@ describe Robot do
         expect( subject.pos.y ).to be 0
       end
     end
-
-    context "not placed" do
-      it "ignores movement" do
-        expect( subject.report ).to be NonPos::REPORT
-      end
-    end
   end
-
 end

@@ -16,8 +16,8 @@ class Robot
     place pos.right
   end
 
-  def report
-    puts pos.report
+  def report(stdout = $stdout)
+    stdout.puts pos.report
   end
 
   def left
