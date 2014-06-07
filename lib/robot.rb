@@ -5,11 +5,11 @@ class Robot
 
   def initialize(table_top)
     @table_top = table_top
-    @pos = NonPos.new
+    @pos       = NonPos.new
   end
 
   def move
-    place pos.move
+    place pos.forward
   end
 
   def right

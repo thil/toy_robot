@@ -18,7 +18,7 @@ class NonPos
     self
   end
 
-  def move
+  def forward
     self
   end
 end

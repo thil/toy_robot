@@ -3,14 +3,14 @@ require File.expand_path 'lib/non_pos'
 require File.expand_path 'lib/pos'
 
 describe Robot do
-
   let(:table_top) { double("TableTop", width: 5, height: 5) }
   let(:robot) { Robot.new(table_top) }
 
   describe "#place" do
-    let(:valid) { true }
-    let(:pos) { double("Pos", valid?: valid) }
     subject { robot.place(pos);robot }
+
+    let(:valid) { true }
+    let(:pos)   { double("Pos", valid?: valid) }
 
     it "assigns pos" do
       expect( subject.pos ).to be pos
@@ -18,6 +18,7 @@ describe Robot do
 
     context "invalid pos" do
       let(:valid) { false }
+
       it "ignores pos" do
         expect( subject.pos.report ).to be NonPos::REPORT
       end
@@ -25,8 +26,9 @@ describe Robot do
   end
 
   describe "#report" do
-    let(:pos) { Pos.new(0, 0, Pos::WEST) }
     subject { robot.report }
+
+    let(:pos) { Pos.new(0, 0, Pos::WEST) }
 
     it "reports back current position" do
       robot.place(pos)
@@ -44,6 +46,7 @@ describe Robot do
 
   describe "#right" do
     subject { robot.right; robot }
+
     let(:pos) { Pos.new(0, 0, Pos::WEST) }
 
     it "turns from WEST to NORTH" do
@@ -67,21 +70,26 @@ describe Robot do
       expect( subject.pos.orientation ).to be Pos::WEST
     end
 
+    context "not placed" do
+      it "ignores movement" do
+        expect( subject.pos.report ).to be NonPos::REPORT
+      end
+    end
   end
 
   describe "#move" do
     subject { robot.move; robot }
 
+    context "not placed" do
+      it "ignores movement" do
+        expect( subject.pos.report ).to be NonPos::REPORT
+      end
+    end
+
     it "moves robot forward one position" do
       pos = Pos.new(0, 0, Pos::NORTH)
       robot.place(pos)
       expect( subject.pos.y ).to be 1
-    end
-
-    it "moves robot forward one position" do
-      pos = Pos.new(0, 0, Pos::EAST)
-      robot.place(pos)
-      expect( subject.pos.x ).to be 1
     end
 
     context "on the edge of tabletop" do
